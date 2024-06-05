@@ -1,0 +1,14 @@
+<h1><%= @city.name %></h1>
+
+<p><strong>Latitud:</strong> <%= @city.latitude %></p>
+<p><strong>Longitud:</strong> <%= @city.longitude %></p>
+
+<div id="map" style="height: 400px;"></div>
+
+<script>
+    var map = L.map('map').setView([<%= @city.latitude %>, <%= @city.longitude %>], 10);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(map);
+    L.marker([<%= @city.latitude %>, <%= @city.longitude %>]).addTo(map);
+</script>

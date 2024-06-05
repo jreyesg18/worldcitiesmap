@@ -1,0 +1,16 @@
+<h1>Ciudades</h1>
+
+<%= form_tag search_cities_path, method: :get do %>
+  <%= text_field_tag :query, params[:query], placeholder: "Buscar ciudades..." %>
+  <%= submit_tag "Buscar" %>
+<% end %>
+
+<% if @cities.any? %>
+  <ul>
+    <% @cities.each do |city| %>
+      <li><%= link_to city.name, city_path(city) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No se encontraron ciudades.</p>
+<% end %>
