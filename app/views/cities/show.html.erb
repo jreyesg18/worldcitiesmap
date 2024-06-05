@@ -6,9 +6,11 @@
 <div id="map" style="height: 400px;"></div>
 
 <script>
-    var map = L.map('map').setView([<%= @city.latitude %>, <%= @city.longitude %>], 10);
+    var map = L.map('map').setView([<%= @city.latitude %>, <%= @city.longitude %>], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
     }).addTo(map);
-    L.marker([<%= @city.latitude %>, <%= @city.longitude %>]).addTo(map);
+    L.marker([<%= @city.latitude %>, <%= @city.longitude %>]).addTo(map)
+      .bindPopup("<b><%= @city.name %></b>").openPopup();
 </script>
+
